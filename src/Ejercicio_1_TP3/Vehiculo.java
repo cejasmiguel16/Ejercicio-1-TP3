@@ -4,7 +4,6 @@ public class Vehiculo {
     private String marca;
     private String patente;
     private Double precioBase;
-    private Boolean disponible;
 
     public Vehiculo() {
     }
@@ -13,7 +12,6 @@ public class Vehiculo {
         this.marca = marca;
         this.patente = patente;
         this.precioBase = precioBase;
-        disponible= true;
     }
 
     public String getMarca() {
@@ -40,14 +38,4 @@ public class Vehiculo {
         this.precioBase = precioBase;
     }
 
-    public Boolean getDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(Boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    
-    
 }

@@ -9,9 +9,9 @@ public class AutoNuevo extends Auto implements Venta{
     public AutoNuevo() {
         componentes= new ArrayList <Componente>();
     }
-
+   
     public AutoNuevo(String marca, String patente, Double precioBase) {
-        super(marca, patente, precioBase);
+        super(marca, patente, precioBase, 0);
         componentes= new ArrayList <Componente>();
     }
     
@@ -26,9 +26,9 @@ public class AutoNuevo extends Auto implements Venta{
                 if(i!=null){
                 porcentaje= ((i.getPorcentaje()*getPrecioBase())/100);
                 precio= precio + porcentaje;
-                System.out.println("PRECIO: "+precio);
             }        
         }
+        System.out.println("PRECIO: "+precio);
     }
 
     

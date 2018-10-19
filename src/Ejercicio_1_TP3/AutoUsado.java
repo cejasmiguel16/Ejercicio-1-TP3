@@ -7,14 +7,16 @@ public class AutoUsado extends Auto implements Alquiler, Venta {
 
     Scanner entrada=new Scanner(System.in);
     private ArrayList<Componente> componentes;
+    private Double precioBasePorDia;
     
     public AutoUsado() {
         componentes=new ArrayList<Componente>();
     }
 
-    public AutoUsado(String marca, String patente, Double precioBase) {
-        super(marca, patente, precioBase);
+    public AutoUsado(String marca, String patente, Double precioBase, Integer plazas) {
+        super(marca, patente, precioBase, plazas);
         componentes=new ArrayList<Componente>();
+        precioBasePorDia=50.;
     }
     
        public void IngresarComponentes(Componente componente){
@@ -25,13 +27,10 @@ public class AutoUsado extends Auto implements Alquiler, Venta {
     @Override
     public void calcularPrecioAlquiler() {
         Double precioTotal;
-        Integer plazas;
-        Integer dias;
+        Double dias;
         System.out.println("Cuantos dias piensa alquilar el auto? :");
-        dias = entrada.nextInt();
-        System.out.println("Con cuantas plazas desea su auto? :");
-        plazas = entrada.nextInt();
-        precioTotal=(plazas*50)+(dias*50)+(getPrecioBase()*0.35)+getPrecioBase();
+        dias = entrada.nextDouble();
+        precioTotal=(getPlazas()*50.)+(dias*precioBasePorDia);
         System.out.println("Trato hecho");
         System.out.println("El precio de tu alquiler es de :"+precioTotal);
     }
@@ -43,9 +42,10 @@ public class AutoUsado extends Auto implements Alquiler, Venta {
                 if(i!=null){
                 porcentaje= ((i.getPorcentaje()*getPrecioBase())/100);
                 precio= precio + porcentaje;
-                System.out.println("PRECIO: "+precio);
+                //componentes.remove(i);
             }        
         }
+        System.out.println("EL PRECIO DE SU NUEVO AUTO USADO ES: "+precio);
     }
     
 }

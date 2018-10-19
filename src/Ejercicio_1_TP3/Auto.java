@@ -5,8 +5,8 @@ public class Auto extends VehiculoPasajero{
     public Auto() {
     }
 
-    public Auto(String marca, String patente, Double precioBase) {
-        super(marca, patente, precioBase);
+    public Auto(String marca, String patente, Double precioBase, Integer plazas) {
+        super(marca, patente, precioBase, plazas);
     }
     
 }
