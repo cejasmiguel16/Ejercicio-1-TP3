@@ -18,14 +18,14 @@ public class Camioneta extends VehiculoCarga implements Alquiler{
     public void calcularPrecioAlquiler() {
         Double precioTotal;
         Double kilometros;
-        System.out.println("Cuantos kilometros piensa recorrer con nuestro camion? :");
+        System.out.println("Cuantos kilometros piensa recorrer con nuestra camion?eta :");
         kilometros = entrada.nextDouble();
         if(kilometros<50){
             precioTotal= 300.0 + 200.0;
             System.out.println("Trato hecho");
             System.out.println("El precio de tu alquiler es de :"+precioTotal);
         }else{
-            precioTotal=getPrecioBase()+((kilometros*20)+200)+(getPrecioBase()*0.35);
+            precioTotal=getPrecioBase()+((kilometros*20))+(getPrecioBase()*0.35);
             System.out.println("Trato hecho");
             System.out.println("El precio de tu alquiler es de :"+precioTotal);
         }

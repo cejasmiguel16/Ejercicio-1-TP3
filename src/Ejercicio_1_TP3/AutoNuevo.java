@@ -1,57 +1,36 @@
 package Ejercicio_1_TP3;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
-public class AutoNuevo extends Auto{
+public class AutoNuevo extends Auto implements Venta{
     
-    Scanner entrada= new Scanner(System.in);
+    private ArrayList <Componente> componentes;
 
     public AutoNuevo() {
+        componentes= new ArrayList <Componente>();
     }
 
     public AutoNuevo(String marca, String patente, Double precioBase) {
         super(marca, patente, precioBase);
+        componentes= new ArrayList <Componente>();
     }
     
-    public void CalcularPrecioVenta(){
-        Double precioTotal, aire, levantaCristales, alarma, adicional, plazas; 
-        String opc;
-        adicional=getPrecioBase()*0.5;
-        System.out.println("Desea agregar aire acondicionado a su nuevo auto ? : S/N");
-        opc = entrada.nextLine();
-        if("S".equals(opc) || "s".equals(opc)){
-            aire=getPrecioBase()*0.02;
-            System.out.println("AGREGADO");
-        }else{
-            aire=0.0;
-        }
-        System.out.println("Desea levanta cristales electricos ? : S/N");
-        opc = entrada.nextLine();
-        if("S".equals(opc) || "s".equals(opc)){
-            levantaCristales=getPrecioBase()*0.05;
-            System.out.println("AGREGADO");
-        }else{
-            levantaCristales=0.0;
-        }
-        System.out.println("Desea agregar alarma a su nuevo auto ? : S/N");
-        opc= entrada.nextLine();
-        if("S".equals(opc) || "s".equals(opc)){
-            alarma=getPrecioBase()*0.02;
-            System.out.println("AGREGADO");
-        }else{
-            alarma=0.0;
-        }
-        precioTotal=getPrecioBase()+aire+levantaCristales+alarma+adicional;
-        System.out.println("El precio de su nuevo Auto es de "+precioTotal);
-       
+    public void IngresarComponentes(Componente componente){
+        componentes.add(componente);
     }
     
-    public void mostrarDatos(){
-        
-            System.out.println("marca : "+getMarca());
-            System.out.println("patente : "+getPatente());
-            System.out.println("precio base : "+getPrecioBase());
-        
+    @Override
+    public void calcularPrecioVenta(){
+        Double porcentaje, precio=getPrecioBase()+((50*getPrecioBase())/100);
+            for(Componente i: componentes){
+                if(i!=null){
+                porcentaje= ((i.getPorcentaje()*getPrecioBase())/100);
+                precio= precio + porcentaje;
+                System.out.println("PRECIO: "+precio);
+            }        
+        }
     }
+
+    
     
 }
